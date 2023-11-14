@@ -23,7 +23,8 @@ defmodule Scrapper.MixProject do
   defp deps do
     [
       {:crawly, "0.16.0"},
-      {:floki, "0.35.2"}
+      {:floki, "0.35.2"},
+      {:credo, "1.7.1", only: [:dev, :test], runtime: false}
     ]
   end
 end
