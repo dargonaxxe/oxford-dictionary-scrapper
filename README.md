@@ -1,21 +1,38 @@
-# Scrapper
+# OxScrapper
 
-**TODO: Add description**
+Basic tool for getting definition of a word from Oxford dictionary. 
 
-## Installation
+## Prerequisites
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `scrapper` to your list of dependencies in `mix.exs`:
+- Elixir 1.15+ 
 
-```elixir
-def deps do
-  [
-    {:scrapper, "~> 0.1.0"}
-  ]
-end
+## Prepare 
+
+```
+git clone git@github.com:dargonaxxe/oxford_dictionary_scrapper.git oxscrapper 
+cd oxscrapper
+mix deps.get && mix deps.compile
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/scrapper>.
+## Build 
+
+```
+OUTPUT_DIR=output MIX_ENV=prod mix escript.build
+```
+
+## Use 
+
+### Prepare input file
+
+Currently, OxScrapper only supports semicolon separated words contained in a file.
+Other formats support is yet to come.
+```
+cat "bread;duck;dog;silver" > input.csv
+```
+
+### Use OxScrapper
+
+```
+./scrapper input.csv output.csv
+```
 
