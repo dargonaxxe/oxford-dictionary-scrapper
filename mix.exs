@@ -25,7 +25,8 @@ defmodule Scrapper.MixProject do
       {:crawly, "0.16.0"},
       {:floki, "0.35.2"},
       {:credo, "1.7.1", only: [:dev, :test], runtime: false},
-      {:jason, "1.4.1"}
+      {:jason, "1.4.1"},
+      {:optimus, "0.5.0"}
     ]
   end
 end
