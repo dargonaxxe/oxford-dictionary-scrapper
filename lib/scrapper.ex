@@ -1,18 +1,23 @@
 defmodule Scrapper do
   @moduledoc """
-  Documentation for `Scrapper`.
+  Main module that basically connects all the other modules together.
   """
 
-  @doc """
-  Hello world.
+  @spider Oxford.Spider
+  def scrap(words_file, output_file) do
+    urls = Oxford.LinkBuilder.from_file!(words_file)
+    :ok = Crawly.Engine.start_spider(@spider, urls: urls)
 
-  ## Examples
+    {:ok, id} = Crawly.Engine.get_crawl_id(@spider)
+    :ok = Scrapper.SpiderWrapper.wait_for_spider()
 
-      iex> Scrapper.hello()
-      :world
+    :ok =
+      spider_report_file(id)
+      |> Reword.CsvFormatter.from_json(output_file)
+  end
 
-  """
-  def hello do
-    :world
+  defp spider_report_file(id) do
+    output_directory = Application.get_env(:scrapper, :output_directory)
+    "#{output_directory}/Oxford.Spider_#{id}.json"
   end
 end
