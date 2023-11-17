@@ -27,7 +27,7 @@ OUTPUT_DIR=output MIX_ENV=prod mix escript.build
 Currently, OxScrapper only supports semicolon separated words contained in a file.
 Other formats support is yet to come.
 ```
-cat "bread;duck;dog;silver" > input.csv
+echo "bread;duck;dog;silver" > input.csv
 ```
 
 ### Use OxScrapper
